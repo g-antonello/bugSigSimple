@@ -74,3 +74,23 @@ getMostFrequentTaxa <- function(dat, n=10, sig.type=c("both", "increased", "decr
     msc.tab <- sort(table(unlist(msc)), decreasing=TRUE)
     head(msc.tab, n=n) 
 }
+
+
+
+#'-------------------------------------------------
+#' Author: Giacomo Antonello
+#' Date: 2025-03-17
+#' Description:
+#' 
+#' A simple function to correct Doi links to make them more easily usable
+
+complete_DOI_link <- function(doi.vec){
+  return(
+    ifelse(
+      test = startsWith(doi.vec, "10."),
+      yes = paste0("https://doi.org/", doi.vec),
+      no = doi.vec
+    )
+  )
+}
+
